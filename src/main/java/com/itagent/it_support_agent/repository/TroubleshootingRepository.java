@@ -15,7 +15,17 @@ public class TroubleshootingRepository {
     public TroubleshootingRepository() {
 
         issues.add(new TroubleshootingIssue(
-                "bluetooth",
+                "Bluetooth not working",
+
+                List.of(
+                        "bluetooth",
+                        "bluetooth not working",
+                        "bluetooth missing",
+                        "bluetooth disappeared",
+                        "bluetooth not showing",
+                        "can't find bluetooth"
+                ),
+
                 """
                 1. Restart your laptop.
                 2. Open Device Manager.
@@ -23,6 +33,7 @@ public class TroubleshootingRepository {
                 4. Check whether the Bluetooth adapter is visible.
                 5. If Bluetooth is missing, reinstall the Bluetooth driver.
                 """,
+
                 "Bluetooth Driver",
                 "https://your-company-driver-link"
         ));
