@@ -18,13 +18,18 @@ public class AgentService {
 
     public String findSolution(String query) {
 
+        String normalizedQuery = query.toLowerCase().trim();
+
         List<TroubleshootingIssue> issues = repository.findAll();
 
         for (TroubleshootingIssue issue : issues) {
 
-            if (query.toLowerCase().contains(issue.getIssue().toLowerCase())) {
+            for (String keyword : issue.getKeywords()) {
 
-                return buildResponse(issue);
+                if (normalizedQuery.contains(keyword.toLowerCase())) {
+
+                    return buildResponse(issue);
+                }
             }
         }
 
@@ -34,7 +39,7 @@ public class AgentService {
                 Please provide more details about the problem.
                 """;
     }
-
+    
     private String buildResponse(TroubleshootingIssue issue) {
 
         return """
