@@ -1,5 +1,8 @@
 package com.itagent.it_support_agent.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -18,6 +21,13 @@ public class TroubleshootingIssue {
     private String driverName;
 
     private String driverUrl;
+
+    @OneToMany(
+        mappedBy = "issue",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    private List<TroubleshootingKeyword> keywords = new ArrayList<>();
 
     public TroubleshootingIssue() {
     }
@@ -56,5 +66,13 @@ public class TroubleshootingIssue {
 
     public void setDriverUrl(String driverUrl) {
         this.driverUrl = driverUrl;
+    }
+
+    public List<TroubleshootingKeyword> getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(List<TroubleshootingKeyword> keywords) {
+        this.keywords = keywords;
     }
 }

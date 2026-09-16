@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.itagent.it_support_agent.model.TroubleshootingIssue;
+import com.itagent.it_support_agent.model.TroubleshootingKeyword;
 import com.itagent.it_support_agent.repository.TroubleshootingRepository;
 
 @Service
@@ -24,9 +25,9 @@ public class AgentService {
 
         for (TroubleshootingIssue issue : issues) {
 
-            for (String keyword : issue.getKeywords()) {
+            for (TroubleshootingKeyword keyword : issue.getKeywords()) {
 
-                if (normalizedQuery.contains(keyword.toLowerCase())) {
+                if (normalizedQuery.contains(keyword.getKeyword().toLowerCase())) {
 
                     return buildResponse(issue);
                 }
