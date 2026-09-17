@@ -13,10 +13,14 @@ import com.itagent.it_support_agent.repository.TroubleshootingRepository;
 @Configuration
 public class DataInitializer {
 
-    @Bean
-    CommandLineRunner loadData(TroubleshootingRepository repository) {
+	@Bean
+	CommandLineRunner loadData(TroubleshootingRepository repository) {
 
-        return args -> {
+	    return args -> {
+
+	        if (repository.count() > 0) {
+	            return;
+	        }
 
             // Bluetooth
             TroubleshootingIssue bluetooth = new TroubleshootingIssue();
