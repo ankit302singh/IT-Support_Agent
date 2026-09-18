@@ -77,4 +77,13 @@ public class AdminIssueService {
 
         return repository.save(issue);
     }
+    
+    public void deleteIssue(Long id) {
+
+        TroubleshootingIssue issue = repository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("Issue not found with id: " + id));
+
+        repository.delete(issue);
+    }
 }
