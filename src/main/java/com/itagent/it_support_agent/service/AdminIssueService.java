@@ -43,4 +43,11 @@ public class AdminIssueService {
 
         return repository.findAll();
     }
+    
+    public TroubleshootingIssue getIssueById(Long id) {
+
+        return repository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("Issue not found with id: " + id));
+    }
 }

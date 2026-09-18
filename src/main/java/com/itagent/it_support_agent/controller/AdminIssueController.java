@@ -28,4 +28,20 @@ public class AdminIssueController {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(savedIssue);
     }
+    
+    @GetMapping
+    public ResponseEntity<?> getAllIssues() {
+
+        return ResponseEntity.ok(adminIssueService.getAllIssues());
+    }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<TroubleshootingIssue> getIssueById(
+            @PathVariable Long id) {
+
+        TroubleshootingIssue issue =
+                adminIssueService.getIssueById(id);
+
+        return ResponseEntity.ok(issue);
+    }
 }
