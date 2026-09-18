@@ -1,6 +1,7 @@
 package com.itagent.it_support_agent.model;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "troubleshooting_keyword")
@@ -11,7 +12,7 @@ public class TroubleshootingKeyword {
     private Long id;
 
     private String keyword;
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "issue_id")
     private TroubleshootingIssue issue;
