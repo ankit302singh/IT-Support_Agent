@@ -38,4 +38,9 @@ public class AdminIssueService {
 
         return repository.save(issue);
     }
+    
+    public java.util.List<TroubleshootingIssue> getAllIssues() {
+
+        return repository.findAll();
+    }
 }
