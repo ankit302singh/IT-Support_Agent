@@ -44,4 +44,15 @@ public class AdminIssueController {
 
         return ResponseEntity.ok(issue);
     }
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<TroubleshootingIssue> updateIssue(
+            @PathVariable Long id,
+            @RequestBody IssueRequest request) {
+
+        TroubleshootingIssue updatedIssue =
+                adminIssueService.updateIssue(id, request);
+
+        return ResponseEntity.ok(updatedIssue);
+    }
 }
