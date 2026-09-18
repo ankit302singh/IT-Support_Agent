@@ -55,4 +55,13 @@ public class AdminIssueController {
 
         return ResponseEntity.ok(updatedIssue);
     }
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteIssue(
+            @PathVariable Long id) {
+
+        adminIssueService.deleteIssue(id);
+
+        return ResponseEntity.noContent().build();
+    }
 }
