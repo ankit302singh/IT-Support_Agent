@@ -50,4 +50,31 @@ public class AdminIssueService {
                 .orElseThrow(() ->
                         new RuntimeException("Issue not found with id: " + id));
     }
+    
+    public TroubleshootingIssue updateIssue(Long id, IssueRequest request) {
+
+        TroubleshootingIssue issue = repository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("Issue not found with id: " + id));
+
+        issue.setIssue(request.getIssue());
+        issue.setSolution(request.getSolution());
+        issue.setDriverName(request.getDriverName());
+        issue.setDriverUrl(request.getDriverUrl());
+
+        issue.getKeywords().clear();
+
+        if (request.getKeywords() != null) {
+
+            for (String keyword : request.getKeywords()) {
+
+                TroubleshootingKeyword troubleshootingKeyword =
+                        new TroubleshootingKeyword(keyword, issue);
+
+                issue.getKeywords().add(troubleshootingKeyword);
+            }
+        }
+
+        return repository.save(issue);
+    }
 }
