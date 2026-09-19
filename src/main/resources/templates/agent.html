@@ -62,9 +62,16 @@
 
                 <h5>🔧 Solution</h5>
 
-                <div class="alert alert-secondary">
-                    Your solution will appear here.
-                </div>
+				<div th:if="${solution != null}" class="mt-4">
+
+				    <h5>🔧 Solution</h5>
+
+				    <div class="alert alert-secondary">
+				        <pre style="white-space: pre-wrap; font-family: inherit;"
+				             th:text="${solution}"></pre>
+				    </div>
+
+				</div>
 
             </div>
 
