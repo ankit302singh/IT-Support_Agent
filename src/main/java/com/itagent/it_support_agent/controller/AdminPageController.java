@@ -10,7 +10,7 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import com.itagent.it_support_agent.dto.IssueRequest;
 
 @Controller
@@ -64,5 +64,23 @@ public class AdminPageController {
     public String showAddIssuePage() {
 
         return "add-issue";
+    }
+    
+    @GetMapping("/admin/issues/edit/{id}")
+    public String showEditIssuePage(
+            @PathVariable Long id,
+            Model model) {
+
+        var issue = adminIssueService.getIssueById(id);
+
+        String keywords = issue.getKeywords()
+                .stream()
+                .map(keyword -> keyword.getKeyword())
+                .collect(java.util.stream.Collectors.joining(", "));
+
+        model.addAttribute("issue", issue);
+        model.addAttribute("keywords", keywords);
+
+        return "edit-issue";
     }
 }
