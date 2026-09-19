@@ -83,4 +83,32 @@ public class AdminPageController {
 
         return "edit-issue";
     }
+    
+    @PostMapping("/admin/issues/update/{id}")
+    public String updateIssue(
+            @PathVariable Long id,
+            @RequestParam String issue,
+            @RequestParam String keywords,
+            @RequestParam String solution,
+            @RequestParam(required = false) String driverName,
+            @RequestParam(required = false) String driverUrl) {
+
+        IssueRequest request = new IssueRequest();
+
+        request.setIssue(issue);
+
+        List<String> keywordList = Arrays.stream(keywords.split(","))
+                .map(String::trim)
+                .filter(keyword -> !keyword.isEmpty())
+                .toList();
+
+        request.setKeywords(keywordList);
+        request.setSolution(solution);
+        request.setDriverName(driverName);
+        request.setDriverUrl(driverUrl);
+
+        adminIssueService.updateIssue(id, request);
+
+        return "redirect:/admin";
+    }
 }
