@@ -1,14 +1,13 @@
 package com.itagent.it_support_agent.controller;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.itagent.it_support_agent.service.AgentService;
 
-@RestController
-@RequestMapping("/agent")
+@Controller
 public class AgentController {
 
     private final AgentService agentService;
@@ -17,10 +16,20 @@ public class AgentController {
         this.agentService = agentService;
     }
 
-    @GetMapping
-    public String askAgent(@RequestParam String query) {
+    @GetMapping("/agent")
+    public String showAgentPage(
+            @RequestParam(required = false) String query,
+            Model model) {
 
-        return agentService.findSolution(query);
+        if (query != null && !query.isBlank()) {
+
+            String solution = agentService.findSolution(query);
+
+            model.addAttribute("query", query);
+            model.addAttribute("solution", solution);
+        }
+
+        return "agent";
     }
 }
 
