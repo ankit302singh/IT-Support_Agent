@@ -111,4 +111,12 @@ public class AdminPageController {
 
         return "redirect:/admin";
     }
+    
+    @PostMapping("/admin/issues/delete/{id}")
+    public String deleteIssue(@PathVariable Long id) {
+
+        adminIssueService.deleteIssue(id);
+
+        return "redirect:/admin";
+    }
 }
