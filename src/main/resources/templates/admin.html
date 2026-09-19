@@ -8,93 +8,701 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
-    <title>IT Support Admin</title>
+    <title>IT Support | Admin Portal</title>
 
     <!-- Bootstrap -->
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet">
 
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+
+        body {
+            background-color: #f5f7fb;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        /* Sidebar */
+
+        .sidebar {
+            width: 250px;
+            min-height: 100vh;
+            background: #111827;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .brand {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+            border-bottom: 1px solid #273142;
+        }
+
+        .brand-icon {
+            width: 36px;
+            height: 36px;
+            background: #2563eb;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+        }
+
+        .nav-section {
+            padding: 25px 15px;
+        }
+
+        .nav-label {
+            color: #6b7280;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 0 12px 10px;
+            letter-spacing: 0.8px;
+        }
+
+        .sidebar .nav-link {
+            color: #9ca3af;
+            padding: 11px 12px;
+            border-radius: 7px;
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .sidebar .nav-link:hover,
+        .sidebar .nav-link.active {
+            background: #1f2937;
+            color: white;
+        }
+
+        .sidebar .nav-link i {
+            margin-right: 10px;
+            width: 20px;
+        }
+
+
+        /* Main */
+
+        .main-content {
+            margin-left: 250px;
+        }
+
+
+        /* Topbar */
+
+        .topbar {
+            height: 70px;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+        }
+
+        .page-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .admin-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .profile-avatar {
+            width: 36px;
+            height: 36px;
+            background: #e5e7eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #374151;
+        }
+
+
+        /* Content */
+
+        .content {
+            padding: 30px;
+        }
+
+        .page-heading {
+            font-size: 24px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .page-description {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+
+        /* Stats */
+
+        .stat-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 20px;
+            height: 100%;
+        }
+
+        .stat-title {
+            color: #6b7280;
+            font-size: 13px;
+        }
+
+        .stat-number {
+            font-size: 26px;
+            font-weight: 600;
+            color: #111827;
+            margin-top: 5px;
+        }
+
+        .stat-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eff6ff;
+            color: #2563eb;
+            font-size: 19px;
+        }
+
+
+        /* Table */
+
+        .table-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .table-header {
+            padding: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .table-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .table-subtitle {
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .table thead th {
+            background: #f9fafb;
+            color: #6b7280;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 13px 16px;
+        }
+
+        .table tbody td {
+            padding: 15px 16px;
+            font-size: 14px;
+            color: #374151;
+            vertical-align: middle;
+        }
+
+        .table tbody tr:hover {
+            background: #f9fafb;
+        }
+
+
+        /* Issue */
+
+        .issue-name {
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .issue-id {
+            color: #9ca3af;
+            font-size: 12px;
+        }
+
+
+        /* Keyword */
+
+        .keyword-badge {
+            display: inline-block;
+            background: #f3f4f6;
+            color: #4b5563;
+            border-radius: 5px;
+            padding: 4px 8px;
+            font-size: 11px;
+            margin: 2px;
+        }
+
+
+        /* Driver */
+
+        .driver-name {
+            font-size: 13px;
+            color: #4b5563;
+        }
+
+
+        /* Buttons */
+
+        .btn-add {
+            background: #2563eb;
+            border: none;
+            padding: 9px 15px;
+            font-size: 13px;
+        }
+
+        .btn-add:hover {
+            background: #1d4ed8;
+        }
+
+        .action-btn {
+            width: 34px;
+            height: 34px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
+            background: white;
+        }
+
+        .action-btn:hover {
+            background: #f3f4f6;
+        }
+
+        .edit-btn {
+            color: #2563eb;
+        }
+
+        .delete-btn {
+            color: #dc2626;
+        }
+
+
+        /* Search */
+
+        .search-box {
+            max-width: 300px;
+        }
+
+        .search-box input {
+            font-size: 13px;
+            border-radius: 7px;
+        }
+
+
+        /* Responsive */
+
+        @media (max-width: 900px) {
+
+            .sidebar {
+                width: 70px;
+            }
+
+            .brand span,
+            .sidebar .nav-link span,
+            .nav-label {
+                display: none;
+            }
+
+            .brand {
+                justify-content: center;
+                padding: 0;
+            }
+
+            .brand-icon {
+                margin: 0;
+            }
+
+            .sidebar .nav-link {
+                text-align: center;
+            }
+
+            .sidebar .nav-link i {
+                margin: 0;
+            }
+
+            .main-content {
+                margin-left: 70px;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
-<body class="bg-light">
+<body>
 
 
-<!-- ================= HEADER ================= -->
+<!-- ================= SIDEBAR ================= -->
 
-<nav class="navbar navbar-dark bg-dark shadow-sm">
+<div class="sidebar">
 
-    <div class="container">
+    <div class="brand">
 
-        <span class="navbar-brand mb-0 h1">
-            🛠️ IT Support Admin
-        </span>
+        <div class="brand-icon">
+            <i class="bi bi-tools"></i>
+        </div>
 
-        <span class="text-white">
-            Issue Management
-        </span>
+        <span>IT Support</span>
 
     </div>
 
-</nav>
+
+    <div class="nav-section">
+
+        <div class="nav-label">
+            Workspace
+        </div>
 
 
-<!-- ================= MAIN CONTENT ================= -->
+        <a href="/admin"
+           class="nav-link active">
 
-<div class="container mt-5 mb-5">
+            <i class="bi bi-grid-1x2"></i>
+
+            <span>Dashboard</span>
+
+        </a>
 
 
-    <!-- Page Header -->
+        <a href="/admin"
+           class="nav-link">
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
+            <i class="bi bi-wrench-adjustable"></i>
 
-        <div>
+            <span>Issues</span>
 
-            <h2 class="fw-bold">
-                Troubleshooting Issues
-            </h2>
+        </a>
 
-            <p class="text-muted mb-0">
-                Manage IT support problems and solutions
-            </p>
+
+        <div class="nav-label mt-4">
+            Management
+        </div>
+
+
+        <a href="#"
+           class="nav-link">
+
+            <i class="bi bi-people"></i>
+
+            <span>Employees</span>
+
+        </a>
+
+
+        <a href="#"
+           class="nav-link">
+
+            <i class="bi bi-gear"></i>
+
+            <span>Settings</span>
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="main-content">
+
+
+    <!-- Topbar -->
+
+    <div class="topbar">
+
+        <div class="page-title">
+
+            Troubleshooting
 
         </div>
 
 
-		<a href="/admin/issues/new"
-		   class="btn btn-primary">
+        <div class="admin-profile">
 
-		    ➕ Add New Issue
+            <div class="profile-avatar">
 
-		</a>
+                <i class="bi bi-person"></i>
+
+            </div>
+
+            <div>
+
+                <div style="font-size: 13px; font-weight: 600;">
+                    Administrator
+                </div>
+
+                <div style="font-size: 11px; color: #6b7280;">
+                    IT Support
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
 
-    <!-- ================= ISSUE TABLE ================= -->
+    <!-- Content -->
 
-    <div class="card shadow-sm border-0">
+    <div class="content">
 
-        <div class="card-body">
+
+        <!-- Heading -->
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <div>
+
+                <div class="page-heading">
+                    Troubleshooting Issues
+                </div>
+
+                <div class="page-description">
+                    Manage your organization's IT support knowledge base.
+                </div>
+
+            </div>
+
+
+            <a href="/admin/issues/new"
+               class="btn btn-primary btn-add">
+
+                <i class="bi bi-plus-lg me-1"></i>
+
+                Add Issue
+
+            </a>
+
+        </div>
+
+
+        <!-- ================= STATS ================= -->
+
+        <div class="row g-3 mb-4">
+
+
+            <div class="col-md-4">
+
+                <div class="stat-card">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <div class="stat-title">
+                                Total Issues
+                            </div>
+
+                            <div class="stat-number"
+                                 th:text="${#lists.size(issues)}">
+                                0
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-icon">
+
+                            <i class="bi bi-wrench"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="stat-card">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <div class="stat-title">
+                                Knowledge Keywords
+                            </div>
+
+                            <div class="stat-number">
+
+                                <span
+                                    th:text="${#aggregates.sum(issues.![keywords.size()])}">
+                                    0
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-icon">
+
+                            <i class="bi bi-tags"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+
+                <div class="stat-card">
+
+                    <div class="d-flex justify-content-between">
+
+                        <div>
+
+                            <div class="stat-title">
+                                Driver Resources
+                            </div>
+
+                            <div class="stat-number">
+
+                                <span
+                                    th:text="${#lists.size(issues.?[driverUrl != null and !driverUrl.isEmpty()])}">
+                                    0
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="stat-icon">
+
+                            <i class="bi bi-download"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= TABLE ================= -->
+
+        <div class="table-card">
+
+
+            <!-- Table Header -->
+
+            <div class="table-header">
+
+                <div class="d-flex justify-content-between align-items-center">
+
+
+                    <div>
+
+                        <div class="table-title">
+                            Knowledge Base
+                        </div>
+
+                        <div class="table-subtitle">
+                            Troubleshooting solutions available to employees
+                        </div>
+
+                    </div>
+
+
+                    <div class="search-box">
+
+                        <div class="input-group">
+
+                            <span class="input-group-text bg-white">
+                                <i class="bi bi-search"></i>
+                            </span>
+
+                            <input
+                                type="text"
+                                id="searchInput"
+                                class="form-control"
+                                placeholder="Search issues...">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Table -->
 
             <div class="table-responsive">
 
-                <table class="table table-hover align-middle">
+                <table class="table mb-0"
+                       id="issuesTable">
 
-                    <thead class="table-dark">
+                    <thead>
 
                         <tr>
 
-                            <th>ID</th>
+                            <th style="width: 70px;">
+                                ID
+                            </th>
 
-                            <th>Issue</th>
+                            <th>
+                                Issue
+                            </th>
 
-                            <th>Keywords</th>
+                            <th>
+                                Keywords
+                            </th>
 
-                            <th>Driver</th>
+                            <th>
+                                Driver
+                            </th>
 
-                            <th>Actions</th>
+                            <th class="text-end">
+                                Actions
+                            </th>
 
                         </tr>
 
@@ -103,11 +711,18 @@
 
                     <tbody>
 
+
                         <tr th:each="issue : ${issues}">
+
 
                             <!-- ID -->
 
-                            <td th:text="${issue.id}">
+                            <td>
+
+                                <span class="issue-id"
+                                      th:text="'#' + ${issue.id}">
+                                </span>
+
                             </td>
 
 
@@ -115,9 +730,9 @@
 
                             <td>
 
-                                <strong
-                                    th:text="${issue.issue}">
-                                </strong>
+                                <div class="issue-name"
+                                     th:text="${issue.issue}">
+                                </div>
 
                             </td>
 
@@ -128,7 +743,7 @@
 
                                 <span
                                     th:each="keyword : ${issue.keywords}"
-                                    class="badge text-bg-light border me-1"
+                                    class="keyword-badge"
                                     th:text="${keyword.keyword}">
                                 </span>
 
@@ -137,54 +752,82 @@
 
                             <!-- Driver -->
 
-                            <td th:text="${issue.driverName}">
+                            <td>
+
+                                <span
+                                    class="driver-name"
+                                    th:text="${issue.driverName != null and !issue.driverName.isBlank() ? issue.driverName : '—'}">
+                                </span>
+
                             </td>
 
 
                             <!-- Actions -->
 
-                            <td>
-
-								<a th:href="@{/admin/issues/edit/{id}(id=${issue.id})}"
-								   class="btn btn-sm btn-outline-primary me-1">
-
-								    ✏️ Edit
-
-								</a>
+                            <td class="text-end">
 
 
-								<form th:action="@{/admin/issues/delete/{id}(id=${issue.id})}"
-								      method="post"
-								      class="d-inline"
-								      onsubmit="return confirm('Are you sure you want to delete this issue?');">
+                                <!-- Edit -->
 
-								    <button
-								        type="submit"
-								        class="btn btn-sm btn-outline-danger">
+                                <a
+                                    th:href="@{/admin/issues/edit/{id}(id=${issue.id})}"
+                                    class="action-btn edit-btn me-1"
+                                    title="Edit">
 
-								        🗑️ Delete
+                                    <i class="bi bi-pencil"></i>
 
-								    </button>
+                                </a>
 
-								</form>
+
+                                <!-- Delete -->
+
+                                <form
+                                    th:action="@{/admin/issues/delete/{id}(id=${issue.id})}"
+                                    method="post"
+                                    class="d-inline"
+                                    onsubmit="return confirm('Are you sure you want to delete this issue?');">
+
+                                    <button
+                                        type="submit"
+                                        class="action-btn delete-btn"
+                                        title="Delete">
+
+                                        <i class="bi bi-trash"></i>
+
+                                    </button>
+
+                                </form>
+
 
                             </td>
+
 
                         </tr>
 
 
-                        <!-- No Issues -->
+                        <!-- Empty -->
 
                         <tr th:if="${#lists.isEmpty(issues)}">
 
                             <td colspan="5"
-                                class="text-center text-muted py-4">
+                                class="text-center py-5">
 
-                                No troubleshooting issues found.
+                                <div class="text-muted">
+
+                                    <i class="bi bi-inbox"
+                                       style="font-size: 32px;">
+                                    </i>
+
+                                    <div class="mt-2">
+                                        No troubleshooting issues found.
+                                    </div>
+
+                                </div>
 
                             </td>
 
                         </tr>
+
 
                     </tbody>
 
@@ -194,21 +837,49 @@
 
         </div>
 
+
+        <!-- Footer -->
+
+        <div class="text-center text-muted mt-4">
+
+            <small>
+                IT Support Agent • Internal Administration Portal
+            </small>
+
+        </div>
+
+
     </div>
-
-
-    <!-- Footer -->
-
-    <div class="text-center text-muted mt-4">
-
-        <small>
-            IT Support Agent • Admin Panel
-        </small>
-
-    </div>
-
 
 </div>
+
+
+<!-- ================= SEARCH ================= -->
+
+<script>
+
+    document.getElementById("searchInput")
+        .addEventListener("keyup", function () {
+
+            const searchValue =
+                this.value.toLowerCase();
+
+            const rows =
+                document.querySelectorAll("#issuesTable tbody tr");
+
+            rows.forEach(function (row) {
+
+                const text =
+                    row.innerText.toLowerCase();
+
+                row.style.display =
+                    text.includes(searchValue) ? "" : "none";
+
+            });
+
+        });
+
+</script>
 
 
 </body>
