@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.itagent.it_support_agent.model.TroubleshootingIssue;
 import com.itagent.it_support_agent.service.AgentService;
 
 @Controller
@@ -23,13 +24,13 @@ public class AgentController {
 
         if (query != null && !query.isBlank()) {
 
-            String solution = agentService.findSolution(query);
+            TroubleshootingIssue issue =
+                    agentService.findSolution(query);
 
             model.addAttribute("query", query);
-            model.addAttribute("solution", solution);
+            model.addAttribute("issue", issue);
         }
 
         return "agent";
     }
 }
-

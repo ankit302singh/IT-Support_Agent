@@ -17,7 +17,7 @@ public class AgentService {
         this.repository = repository;
     }
 
-    public String findSolution(String query) {
+    public TroubleshootingIssue findSolution(String query) {
 
         String normalizedQuery = query.toLowerCase().trim();
 
@@ -27,43 +27,14 @@ public class AgentService {
 
             for (TroubleshootingKeyword keyword : issue.getKeywords()) {
 
-                if (normalizedQuery.contains(keyword.getKeyword().toLowerCase())) {
+                if (normalizedQuery.contains(
+                        keyword.getKeyword().toLowerCase())) {
 
-                    return buildResponse(issue);
+                    return issue;
                 }
             }
         }
 
-        return """
-                ❓ I couldn't find a troubleshooting solution for this issue.
-
-                Please provide more details about the problem.
-                """;
-    }
-    
-    private String buildResponse(TroubleshootingIssue issue) {
-
-        return """
-                🔧 IT Support
-
-                Issue:
-                %s
-
-                Solution:
-                %s
-
-                📥 Driver:
-                %s
-
-                🔗 Download:
-                %s
-
-                If the problem still continues, please contact IT Support.
-                """.formatted(
-                        issue.getIssue(),
-                        issue.getSolution(),
-                        issue.getDriverName(),
-                        issue.getDriverUrl()
-                );
+        return null;
     }
 }
