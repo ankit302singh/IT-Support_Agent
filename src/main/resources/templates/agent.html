@@ -15,234 +15,1069 @@
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet">
 
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <style>
+
+        /* =========================
+           GLOBAL
+        ========================= */
+
+        body {
+            margin: 0;
+            background: #f4f8ff;
+            color: #172554;
+            font-family: "Segoe UI", Arial, sans-serif;
+            min-height: 100vh;
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .topbar {
+            height: 78px;
+            background: linear-gradient(
+                90deg,
+                #1769e0,
+                #2563eb
+            );
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 42px;
+
+            color: white;
+
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+
+        .brand-icon {
+            font-size: 30px;
+        }
+
+
+        .brand-name {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+
+        .brand-divider {
+            height: 28px;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.45);
+            margin: 0 5px;
+        }
+
+
+        .brand-tagline {
+            font-size: 15px;
+            opacity: 0.9;
+        }
+
+
+        .portal-name {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+
+        /* =========================
+           BACKGROUND ROCKET WATERMARKS
+        ========================= */
+
+        .page-wrapper {
+            position: relative;
+            overflow: hidden;
+            min-height: calc(100vh - 78px);
+            padding-bottom: 70px;
+        }
+
+
+        .rocket-watermark {
+            position: absolute;
+            color: #d7e7ff;
+            opacity: 0.55;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+
+        .rocket-one {
+            font-size: 180px;
+            left: 20px;
+            top: 80px;
+            transform: rotate(-25deg);
+        }
+
+
+        .rocket-two {
+            font-size: 80px;
+            left: 300px;
+            top: 45px;
+            transform: rotate(25deg);
+        }
+
+
+        .rocket-three {
+            font-size: 140px;
+            right: 25px;
+            top: 390px;
+            transform: rotate(25deg);
+        }
+
+
+        .rocket-four {
+            font-size: 75px;
+            right: 170px;
+            bottom: 100px;
+            transform: rotate(-20deg);
+        }
+
+
+        .rocket-five {
+            font-size: 90px;
+            left: 70px;
+            bottom: 40px;
+            transform: rotate(-35deg);
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .main-container {
+            position: relative;
+            z-index: 2;
+
+            max-width: 1250px;
+
+            margin: 0 auto;
+
+            padding: 45px 30px 0;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+
+        .hero h1 {
+            font-size: 46px;
+            font-weight: 700;
+            color: #102a5c;
+            margin-bottom: 10px;
+        }
+
+
+        .hero p {
+            font-size: 18px;
+            color: #536b92;
+            margin: 0;
+        }
+
+
+        /* =========================
+           MAIN GRID
+        ========================= */
+
+        .content-grid {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1fr)
+                270px;
+
+            gap: 24px;
+
+            align-items: start;
+        }
+
+
+        /* =========================
+           SEARCH CARD
+        ========================= */
+
+        .search-card {
+            background: white;
+
+            border-radius: 16px;
+
+            padding: 28px;
+
+            box-shadow:
+                0 8px 30px rgba(30, 64, 175, 0.08);
+
+            border: 1px solid #e3ebf8;
+        }
+
+
+        .search-label {
+            display: block;
+
+            font-size: 17px;
+
+            font-weight: 600;
+
+            margin-bottom: 10px;
+
+            color: #132b57;
+        }
+
+
+        .search-row {
+            display: flex;
+
+            width: 100%;
+
+            border: 1px solid #cbd8ec;
+
+            border-radius: 11px;
+
+            overflow: hidden;
+
+            background: white;
+        }
+
+
+        .search-input {
+            flex: 1;
+
+            border: none;
+
+            outline: none;
+
+            padding: 15px 18px;
+
+            font-size: 18px;
+
+            color: #172554;
+        }
+
+
+        .search-input:focus {
+            box-shadow: none;
+        }
+
+
+        .ask-button {
+            border: none;
+
+            min-width: 205px;
+
+            background: linear-gradient(
+                90deg,
+                #3348ff,
+                #2563eb
+            );
+
+            color: white;
+
+            font-size: 18px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .ask-button:hover {
+            background: linear-gradient(
+                90deg,
+                #2437e8,
+                #1d4ed8
+            );
+        }
+
+
+        /* =========================
+           SUGGESTIONS
+        ========================= */
+
+        .try-label {
+            margin-top: 18px;
+
+            color: #52698f;
+
+            font-size: 15px;
+        }
+
+
+        .suggestions {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            margin-top: 10px;
+        }
+
+
+        .suggestion {
+            background: #eef5ff;
+
+            color: #164ca5;
+
+            border: none;
+
+            border-radius: 20px;
+
+            padding: 8px 14px;
+
+            font-size: 13px;
+
+            font-weight: 500;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .suggestion:hover {
+            background: #dceaff;
+        }
+
+
+        /* =========================
+           SIDE FEATURES
+        ========================= */
+
+        .feature-panel {
+            padding-top: 5px;
+        }
+
+
+        .feature-item {
+            display: flex;
+
+            gap: 14px;
+
+            margin-bottom: 27px;
+        }
+
+
+        .feature-icon {
+            width: 44px;
+
+            height: 44px;
+
+            border-radius: 50%;
+
+            background: #e8f1ff;
+
+            color: #1769e0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 21px;
+
+            flex-shrink: 0;
+        }
+
+
+        .feature-title {
+            font-weight: 700;
+
+            color: #132b57;
+
+            font-size: 15px;
+
+            margin-bottom: 4px;
+        }
+
+
+        .feature-description {
+            color: #617596;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           SOLUTION CARD
+        ========================= */
+
+        .solution-card {
+            background: white;
+
+            margin-top: 20px;
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 8px 30px rgba(30, 64, 175, 0.08);
+
+            border: 1px solid #e3ebf8;
+        }
+
+
+        .solution-header {
+            background: #42905e;
+
+            color: white;
+
+            padding: 16px 24px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+
+        .solution-title {
+            font-size: 20px;
+
+            font-weight: 600;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+
+        .solution-status {
+            background: rgba(255, 255, 255, 0.16);
+
+            border: 1px solid rgba(255, 255, 255, 0.25);
+
+            border-radius: 20px;
+
+            padding: 7px 13px;
+
+            font-size: 13px;
+        }
+
+
+        .solution-body {
+            padding: 25px;
+        }
+
+
+        .solution-section {
+            padding: 5px 0 20px;
+
+            border-bottom: 1px solid #e1e8f2;
+
+            margin-bottom: 20px;
+        }
+
+
+        .solution-section:last-child {
+            border-bottom: none;
+
+            margin-bottom: 0;
+
+            padding-bottom: 5px;
+        }
+
+
+        .section-label {
+            color: #536b92;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            margin-bottom: 7px;
+        }
+
+
+        .issue-name {
+            font-size: 17px;
+
+            color: #203b69;
+
+            font-weight: 500;
+        }
+
+
+        .solution-text {
+            color: #405a80;
+
+            font-size: 15px;
+
+            line-height: 1.8;
+        }
+
+
+        .driver-name {
+            font-size: 16px;
+
+            font-weight: 600;
+
+            color: #162f59;
+
+            margin-bottom: 12px;
+        }
+
+
+        .download-button {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            background: #2563eb;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 8px;
+
+            padding: 10px 18px;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        .download-button:hover {
+            background: #1d4ed8;
+
+            color: white;
+        }
+
+
+        /* =========================
+           NO SOLUTION
+        ========================= */
+
+        .no-solution {
+            background: white;
+
+            border: 1px solid #e3ebf8;
+
+            border-radius: 14px;
+
+            padding: 35px;
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            box-shadow:
+                0 8px 30px rgba(30, 64, 175, 0.06);
+        }
+
+
+        .no-solution-icon {
+            font-size: 42px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .no-solution h4 {
+            color: #263d66;
+
+            font-weight: 600;
+        }
+
+
+        .no-solution p {
+            color: #687d9e;
+
+            margin-bottom: 5px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            position: relative;
+
+            z-index: 2;
+
+            text-align: center;
+
+            margin-top: 45px;
+
+            padding: 20px;
+
+            color: #60779a;
+
+            font-size: 13px;
+
+            border-top: 1px solid #dce6f4;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 950px) {
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-panel {
+                display: grid;
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+
+                gap: 15px;
+            }
+
+            .feature-item {
+                margin-bottom: 0;
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .topbar {
+                padding: 0 18px;
+            }
+
+            .brand-tagline,
+            .brand-divider {
+                display: none;
+            }
+
+            .portal-name {
+                display: none;
+            }
+
+            .brand-name {
+                font-size: 20px;
+            }
+
+            .main-container {
+                padding: 30px 15px 0;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .search-card {
+                padding: 20px;
+            }
+
+            .search-row {
+                flex-direction: column;
+            }
+
+            .search-input {
+                width: 100%;
+            }
+
+            .ask-button {
+                width: 100%;
+                min-height: 52px;
+            }
+
+            .feature-panel {
+                grid-template-columns: 1fr;
+            }
+
+            .rocket-one {
+                font-size: 100px;
+            }
+
+            .rocket-three {
+                font-size: 90px;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
-<body class="bg-light">
+<body>
 
 
 <!-- ================= HEADER ================= -->
 
-<nav class="navbar navbar-dark bg-primary shadow-sm">
+<header class="topbar">
 
-    <div class="container">
+    <div class="brand">
 
-        <span class="navbar-brand mb-0 h1">
-            🛠️ IT Support Agent
+        <span class="brand-icon">
+            🛠️
         </span>
 
-        <span class="text-white">
-            Employee Support Portal
+        <span class="brand-name">
+            IT Support Agent
+        </span>
+
+        <span class="brand-divider"></span>
+
+        <span class="brand-tagline">
+            Your Tech Problems, Our Support
         </span>
 
     </div>
 
-</nav>
+
+    <div class="portal-name">
+        Employee Support Portal
+    </div>
+
+</header>
 
 
-<!-- ================= MAIN CONTENT ================= -->
+<!-- ================= PAGE ================= -->
 
-<div class="container mt-5 mb-5">
-
-    <div class="row justify-content-center">
-
-        <div class="col-lg-8">
+<div class="page-wrapper">
 
 
-            <!-- ================= WELCOME CARD ================= -->
+    <!-- Rocket Watermarks -->
 
-            <div class="text-center mb-4">
+    <div class="rocket-watermark rocket-one">
+        🚀
+    </div>
 
-                <h2 class="fw-bold">
-                    How can we help you?
-                </h2>
+    <div class="rocket-watermark rocket-two">
+        🚀
+    </div>
 
-                <p class="text-muted">
-                    Describe your laptop problem and our IT Support Agent
-                    will help you troubleshoot it.
-                </p>
+    <div class="rocket-watermark rocket-three">
+        🚀
+    </div>
 
-            </div>
+    <div class="rocket-watermark rocket-four">
+        🚀
+    </div>
 
-
-            <!-- ================= SEARCH CARD ================= -->
-
-            <div class="card shadow-sm border-0">
-
-                <div class="card-body p-4">
+    <div class="rocket-watermark rocket-five">
+        🚀
+    </div>
 
 
-                    <form action="/agent" method="get">
+    <main class="main-container">
 
-                        <label for="query"
-                               class="form-label fw-semibold">
+
+        <!-- ================= HERO ================= -->
+
+        <section class="hero">
+
+            <h1>
+                How can we help you?
+            </h1>
+
+            <p>
+                Describe your laptop problem and our IT Support Agent
+                will help you troubleshoot it.
+            </p>
+
+        </section>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <div class="content-grid">
+
+
+            <!-- ================= LEFT ================= -->
+
+            <div>
+
+
+                <!-- SEARCH -->
+
+                <div class="search-card">
+
+                    <form action="/agent"
+                          method="get">
+
+
+                        <label
+                            for="query"
+                            class="search-label">
 
                             Describe your problem
 
                         </label>
 
 
-                        <div class="input-group input-group-lg">
+                        <div class="search-row">
 
                             <input
                                 type="text"
                                 id="query"
                                 name="query"
-                                class="form-control"
+                                class="search-input"
                                 placeholder="Example: Bluetooth is not working"
                                 th:value="${query}"
                                 required>
 
+
                             <button
                                 type="submit"
-                                class="btn btn-primary">
+                                class="ask-button">
 
-                                🔍 Ask Agent
+                                🚀 Ask Agent
 
                             </button>
 
                         </div>
 
+
+                        <!-- Suggestions -->
+
+                        <div class="try-label">
+
+                            Try asking:
+
+                        </div>
+
+
+                        <div class="suggestions">
+
+
+                            <button
+                                type="button"
+                                class="suggestion"
+                                onclick="setQuery('Bluetooth not working')">
+
+                                <i class="bi bi-bluetooth"></i>
+
+                                Bluetooth not working
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="suggestion"
+                                onclick="setQuery('Wi-Fi not working')">
+
+                                <i class="bi bi-wifi"></i>
+
+                                Wi-Fi not working
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="suggestion"
+                                onclick="setQuery('Camera not working')">
+
+                                <i class="bi bi-camera"></i>
+
+                                Camera not working
+
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="suggestion"
+                                onclick="setQuery('Keyboard not working')">
+
+                                <i class="bi bi-keyboard"></i>
+
+                                Keyboard not working
+
+                            </button>
+
+
+                        </div>
+
                     </form>
 
+                </div>
 
-                    <!-- ================= EXAMPLES ================= -->
 
-                    <div class="mt-3">
+                <!-- ================= SOLUTION ================= -->
 
-                        <small class="text-muted">
-                            Try asking:
-                        </small>
+                <div
+                    th:if="${issue != null}"
+                    class="solution-card">
 
-                        <div class="mt-2">
 
-                            <span class="badge text-bg-light border me-2">
-                                Bluetooth not working
-                            </span>
+                    <div class="solution-header">
 
-                            <span class="badge text-bg-light border me-2">
-                                Wi-Fi not working
-                            </span>
+                        <div class="solution-title">
 
-                            <span class="badge text-bg-light border me-2">
-                                Camera not working
-                            </span>
+                            <i class="bi bi-tools"></i>
 
-                            <span class="badge text-bg-light border">
-                                Keyboard not working
-                            </span>
+                            Troubleshooting Solution
+
+                        </div>
+
+
+                        <div class="solution-status">
+
+                            <i class="bi bi-check-circle-fill"></i>
+
+                            Solution Found
 
                         </div>
 
                     </div>
 
-                </div>
 
-            </div>
-
-
-            <!-- ================= SOLUTION ================= -->
-
-            <div th:if="${issue != null}"
-                 class="card shadow-sm border-0 mt-4">
+                    <div class="solution-body">
 
 
-                <!-- Solution Header -->
+                        <!-- Issue -->
 
-                <div class="card-header bg-success text-white">
+                        <div class="solution-section">
 
-                    <h5 class="mb-0">
-                        🔧 Troubleshooting Solution
-                    </h5>
+                            <div class="section-label">
 
-                </div>
+                                <i class="bi bi-file-earmark-text me-1">
+                                </i>
+
+                                Issue
+
+                            </div>
 
 
-                <div class="card-body p-4">
+                            <div
+                                class="issue-name"
+                                th:text="${issue.issue}">
+
+                            </div>
+
+                        </div>
 
 
-                    <!-- Issue -->
+                        <!-- Solution -->
 
-                    <div class="mb-4">
+                        <div class="solution-section">
 
-                        <h6 class="text-muted">
-                            Issue
-                        </h6>
+                            <div class="section-label">
 
-                        <h5 th:text="${issue.issue}">
-                        </h5>
+                                <i class="bi bi-lightbulb me-1">
+                                </i>
+
+                                Recommended Solution
+
+                            </div>
+
+
+                            <div
+                                class="solution-text"
+                                style="white-space: pre-line;"
+                                th:text="${issue.solution}">
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Driver -->
+
+                        <div
+                            th:if="${issue.driverName != null and !issue.driverName.isBlank()}"
+                            class="solution-section">
+
+                            <div class="section-label">
+
+                                <i class="bi bi-download me-1">
+                                </i>
+
+                                Driver
+
+                            </div>
+
+
+                            <div
+                                class="driver-name"
+                                th:text="${issue.driverName}">
+
+                            </div>
+
+
+                            <a
+                                th:if="${issue.driverUrl != null and !issue.driverUrl.isBlank()}"
+                                th:href="${issue.driverUrl}"
+                                target="_blank"
+                                class="download-button">
+
+                                <i class="bi bi-download"></i>
+
+                                Download Driver
+
+                            </a>
+
+                        </div>
+
 
                     </div>
 
-
-                    <hr>
-
-
-                    <!-- Solution -->
-
-                    <div class="mb-4">
-
-                        <h6 class="text-muted">
-                            Recommended Solution
-                        </h6>
-
-                        <p class="mb-0"
-                           style="white-space: pre-line;"
-                           th:text="${issue.solution}">
-                        </p>
-
-                    </div>
-
-
-                    <hr>
-
-
-                    <!-- Driver -->
-
-                    <div th:if="${issue.driverName != null and !issue.driverName.isBlank()}">
-
-                        <h6 class="text-muted">
-                            📥 Driver
-                        </h6>
-
-                        <p th:text="${issue.driverName}">
-                        </p>
-
-
-                        <a th:if="${issue.driverUrl != null and !issue.driverUrl.isBlank()}"
-                           th:href="${issue.driverUrl}"
-                           target="_blank"
-                           class="btn btn-primary">
-
-                            ⬇ Download Driver
-
-                        </a>
-
-                    </div>
-
-
                 </div>
 
-            </div>
+
+                <!-- ================= NO SOLUTION ================= -->
+
+                <div
+                    th:if="${query != null and issue == null}"
+                    class="no-solution">
 
 
-            <!-- ================= NO SOLUTION ================= -->
-
-            <div th:if="${query != null and issue == null}"
-                 class="card shadow-sm border-0 mt-4">
-
-
-                <div class="card-body text-center p-5">
-
-                    <div style="font-size: 40px;">
+                    <div class="no-solution-icon">
                         ❓
                     </div>
 
-                    <h5 class="mt-3">
-                        We couldn't find a solution
-                    </h5>
 
-                    <p class="text-muted">
+                    <h4>
+                        We couldn't find a solution
+                    </h4>
+
+
+                    <p>
 
                         We don't currently have a troubleshooting
                         solution for:
@@ -252,7 +1087,8 @@
 
                     </p>
 
-                    <p class="text-muted mb-0">
+
+                    <p>
 
                         Please provide more details about the problem
                         or contact your IT Support team.
@@ -261,25 +1097,137 @@
 
                 </div>
 
-            </div>
-
-
-            <!-- ================= FOOTER INFO ================= -->
-
-            <div class="text-center text-muted mt-5">
-
-                <small>
-                    IT Support Agent • Internal Use Only
-                </small>
 
             </div>
+
+
+            <!-- ================= RIGHT FEATURES ================= -->
+
+            <aside class="feature-panel">
+
+
+                <!-- Quick Solutions -->
+
+                <div class="feature-item">
+
+                    <div class="feature-icon">
+
+                        <i class="bi bi-lightning-charge-fill">
+                        </i>
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="feature-title">
+                            Quick Solutions
+                        </div>
+
+                        <div class="feature-description">
+                            Get instant troubleshooting steps
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Trusted Support -->
+
+                <div class="feature-item">
+
+                    <div class="feature-icon">
+
+                        <i class="bi bi-shield-check">
+                        </i>
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="feature-title">
+                            Trusted Support
+                        </div>
+
+                        <div class="feature-description">
+                            Verified by IT experts
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Employees -->
+
+                <div class="feature-item">
+
+                    <div class="feature-icon">
+
+                        <i class="bi bi-people-fill">
+                        </i>
+
+                    </div>
+
+
+                    <div>
+
+                        <div class="feature-title">
+                            For All Employees
+                        </div>
+
+                        <div class="feature-description">
+                            Internal support portal
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </aside>
 
 
         </div>
 
-    </div>
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer class="footer">
+
+            IT Support Agent
+
+            <span class="mx-2">•</span>
+
+            Internal Use Only
+
+            <span class="mx-2">•</span>
+
+            Need further help? Contact your IT Support team.
+
+        </footer>
+
+
+    </main>
 
 </div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+    function setQuery(value) {
+
+        document.getElementById("query").value = value;
+
+        document.getElementById("query").focus();
+
+    }
+
+</script>
 
 
 </body>
